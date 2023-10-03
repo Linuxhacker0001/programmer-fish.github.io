@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngrok Status</title>
+</head>
+<body>
+    <h1>Current Ngrok URL:</h1>
+    <p id="ngrok-url">Loading...</p>
+
+    <script>
+        // Use JavaScript to fetch and display the Ngrok URL
+        fetch('YOUR_NGROK_API_ENDPOINT')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ngrok-url').textContent = data.public_url;
+            })
+            .catch(error => console.error('Error fetching Ngrok URL:', error));
+    </script>
+</body>
+</html>
