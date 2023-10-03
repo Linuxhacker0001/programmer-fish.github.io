@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngrok Status</title>
-
-    <!-- Include the ngrok.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/ngrok@3.4.1/dist/ngrok.js"></script>
+   <title>Ngrok Public URL</title>
 </head>
 <body>
-    <h1>Current Ngrok URL:</h1>
-    <p id="ngrok-url">Loading...</p>
-
-    <script>
-        // Initialize ngrok.js
-        ngrok.connect(function (err, url) {
-            if (err) {
-                console.error('Error connecting to Ngrok:', err);
-                document.getElementById('ngrok-url').textContent = 'Error connecting to Ngrok';
-                return;
-            }
-
-            // Update the HTML element with the Ngrok URL
-            document.getElementById('ngrok-url').textContent = url;
-        });
-    </script>
+   <h1>Ngrok Public URL:</h1>
+   <p id="public-url"></p>
+   <script>
+       // Use JavaScript to fetch and display the Ngrok public URL from GitHub
+       fetch('https://raw.githubusercontent.com/YourGitHubUsername/YourRepositoryName/main/ngrok_public_url.txt', {
+           headers: {
+               'Authorization': 'token YourPersonalAccessToken'
+           }
+       })
+       .then(response => response.text())
+       .then(data => {
+           document.getElementById('public-url').textContent = data;
+       });
+   </script>
 </body>
 </html>
